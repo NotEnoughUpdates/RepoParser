@@ -1,8 +1,10 @@
+import io.franzbecker.gradle.lombok.task.DelombokTask
 import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
 
 plugins {
     id("java")
     id("org.checkerframework") version "0.6.13"
+    id("io.franzbecker.gradle-lombok") version "5.0.0"
     `maven-publish`
     signing
 }
@@ -16,17 +18,47 @@ repositories {
 
 dependencies {
     implementation("com.google.code.gson:gson:2.9.0")
-    compileOnly("org.projectlombok:lombok:1.18.24")
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
     testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
+}
+
+lombok {
+    version = "1.18.22"
+    sha256 = ""
 }
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    withJavadocJar()
 }
 
 configure<CheckerFrameworkExtension> {
 
+}
+
+val delombok by tasks.registering(DelombokTask::class) {
+    mainClass.set(lombok.main)
+    dependsOn(tasks.compileJava)
+    val outputDir by extra { layout.buildDirectory.dir("delombok").get() }
+    outputs.dir(outputDir)
+    sourceSets["main"].java.srcDirs.forEach {
+        inputs.dir(it)
+        args(it, "-d", outputDir)
+    }
+    doFirst {
+        delete(outputDir)
+    }
+}
+
+tasks.javadoc {
+    dependsOn(delombok)
+    val outputDir: Directory by delombok.get().extra
+    source = outputDir.asFileTree
+}
+
+val sourcesJar by tasks.creating(Jar::class) {
+    dependsOn(delombok)
+    from(delombok)
+    archiveClassifier.set("sources")
 }
 
 tasks.withType<JavaCompile>() {
@@ -49,6 +81,9 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
+            artifact(sourcesJar) {
+                classifier = "sources"
+            }
         }
     }
 }

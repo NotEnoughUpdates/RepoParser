@@ -20,5 +20,7 @@ public class TestMain {
         System.out.println("first fairy soul in the hub: " + repository.getConstants().getFairySouls().getSoulLocations().get("hub").get(0));
         System.out.println("soul total: " + repository.getConstants().getFairySouls().getMaxSouls());
         System.out.println("minecraft item of ASPECT_OF_THE_END: "+repository.getItems().getItemBySkyblockId("ASPECT_OF_THE_END").getMinecraftItemId());
+        System.out.println("is vanilla ASPECT_OF_THE_END: "+repository.getItems().getItemBySkyblockId("ASPECT_OF_THE_END").isVanilla());
+        System.out.println("is vanilla DIAMOND: "+repository.getItems().getItemBySkyblockId("DIAMOND").isVanilla());
     }
 }
