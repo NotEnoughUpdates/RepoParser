@@ -49,6 +49,9 @@ public class NEUItem {
                     if (singletonRecipe != null)
                         newRecipes.add(singletonRecipe);
                     recipes = newRecipes;
+                    for (NEURecipe recipe : recipes) {
+                        recipe.fillItemInfo(this);
+                    }
                 }
             }
         }

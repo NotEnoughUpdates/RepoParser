@@ -4,17 +4,23 @@ import lombok.Getter;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
-public class NEUTradeRecipe implements NEURecipe {
-    NEUIngredient cost;
-    int min;
-    int max;
+public class NEUNpcShopRecipe implements NEURecipe {
+
+    List<NEUIngredient> cost;
     NEUIngredient result;
+    NEUItem isSoldBy;
+
+    @Override
+    public void fillItemInfo(NEUItem item) {
+        isSoldBy = item;
+    }
 
     @Override
     public Collection<NEUIngredient> getAllInputs() {
-        return Collections.singletonList(cost);
+        return cost;
     }
 
     @Override

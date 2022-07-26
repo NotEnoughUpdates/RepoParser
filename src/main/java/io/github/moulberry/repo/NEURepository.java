@@ -23,14 +23,21 @@ public final class NEURepository {
 
     final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
+            .registerTypeAdapter(new TypeToken<NEUIngredient>() {
+            }.getType(), new NEUIngredient.Serializer())
             .registerTypeAdapter(new TypeToken<Coordinate>() {
             }.getType(), new Coordinate.CoordinateSerializer())
+            .registerTypeAdapter(new TypeToken<NEUMobDropRecipe.Drop>() {
+            }.getType(), new NEUMobDropRecipe.Drop.Serializer())
+            .registerTypeAdapter(new TypeToken<NEUCraftingRecipe>() {
+            }.getType(), new NEUCraftingRecipe.Serializer())
             .registerTypeAdapterFactory(
                     RuntimeTypeAdapterFactory.of(NEURecipe.class, "type")
                             .registerSubtype(NEUForgeRecipe.class, "forge")
                             .registerSubtype(NEUTradeRecipe.class, "trade")
                             .registerSubtype(NEUCraftingRecipe.class, "crafting")
                             .registerSubtype(NEUMobDropRecipe.class, "drops")
+                            .registerSubtype(NEUNpcShopRecipe.class, "npc_shop")
                             .setDefaultTypeTag("crafting")
             )
             .create();
