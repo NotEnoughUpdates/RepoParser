@@ -3,8 +3,11 @@ import io.github.moulberry.repo.NEURepository;
 import io.github.moulberry.repo.NEURepositoryException;
 import io.github.moulberry.repo.NEURepositoryVersion;
 import io.github.moulberry.repo.data.NEUForgeRecipe;
+import io.github.moulberry.repo.data.NEUMobDropRecipe;
 
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestMain {
     public static void main(String[] args) throws NEURepositoryException {
@@ -26,5 +29,18 @@ public class TestMain {
         System.out.println("is vanilla ASPECT_OF_THE_END: " + repository.getItems().getItemBySkyblockId("ASPECT_OF_THE_END").isVanilla());
         System.out.println("is vanilla DIAMOND: " + repository.getItems().getItemBySkyblockId("DIAMOND").isVanilla());
         System.out.println("crafting recipe of DIVAN DRILL: " + ((NEUForgeRecipe) recipes.getRecipes().get("DIVAN_DRILL").stream().findAny().get()).getInputs());
+
+        System.out.println("Non standard drop chances: " + repository.getItems().getItems().values().stream()
+                .flatMap(it -> it.getRecipes().stream())
+                .flatMap(it -> {
+                    if (it instanceof NEUMobDropRecipe) {
+                        return ((NEUMobDropRecipe) it).getDrops().stream();
+                    }
+                    return Stream.empty();
+                })
+                .map(it -> it.getChance())
+                .filter(it -> it != null && !it.matches("\\d+(.\\d+)?+%"))
+                .collect(Collectors.toList()));
+
     }
 }

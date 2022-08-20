@@ -84,6 +84,26 @@ publishing {
             artifact(sourcesJar) {
                 classifier = "sources"
             }
+            pom {
+                name.set("NEU Repo Parsing")
+                description.set("A library for standardized parsing of the NotEnoughUpdates item repository")
+                url.set("https://github.com/NotEnoughUpdates/RepoParser")
+
+                licenses {
+                    license {
+                        name.set("BSD 3-Clause No Military License")
+                        url.set("https://github.com/NotEnoughUpdates/RepoParser/blob/master/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        name.set("Linnea Gräf")
+                    }
+                }
+                scm {
+                    url.set("https://github.com/NotEnoughUpdates/RepoParser")
+                }
+            }
         }
     }
 }
