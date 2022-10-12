@@ -9,7 +9,7 @@ plugins {
     signing
 }
 
-group = "io.github.moulberry"
+group = "moe.nea"
 version = "0.0.1"
 
 repositories {
@@ -102,6 +102,15 @@ publishing {
                 scm {
                     url.set("https://github.com/NotEnoughUpdates/RepoParser")
                 }
+            }
+        }
+    }
+    repositories {
+        maven("https://repo.nea.moe/releases") {
+            name = "neamoeReleases"
+            credentials(PasswordCredentials::class)
+            authentication {
+                create<BasicAuthentication>("basic")
             }
         }
     }
