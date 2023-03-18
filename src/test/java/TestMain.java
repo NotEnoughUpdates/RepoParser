@@ -30,6 +30,18 @@ public class TestMain {
         System.out.println("is vanilla DIAMOND: " + repository.getItems().getItemBySkyblockId("DIAMOND").isVanilla());
         System.out.println("crafting recipe of DIVAN DRILL: " + ((NEUForgeRecipe) recipes.getRecipes().get("DIVAN_DRILL").stream().findAny().get()).getInputs());
 
+        int expTotal = 235268;
+        int expLeft = expTotal;
+        int level = 0;
+        for (int expRequiredForThisLevel : repository.getConstants().getLeveling().getSkillExperienceRequiredPerLevel()) {
+            if (expLeft > expRequiredForThisLevel) {
+                level++;
+                expLeft -= expRequiredForThisLevel;
+            }
+        }
+        System.out.println(expTotal + " skill exp get you to level " + level + " with " + expLeft + " leftover exp");
+
+
         System.out.println("Non standard drop chances: " + repository.getItems().getItems().values().stream()
                 .flatMap(it -> it.getRecipes().stream())
                 .flatMap(it -> {

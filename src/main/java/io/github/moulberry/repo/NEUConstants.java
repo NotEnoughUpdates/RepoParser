@@ -25,6 +25,9 @@ public class NEUConstants implements IReloadable {
     @Getter
     FairySouls fairySouls;
 
+    @Getter
+    Leveling leveling;
+
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
         parents = new Parents(repository.requireFile("constants/parents.json")
@@ -34,6 +37,7 @@ public class NEUConstants implements IReloadable {
         essenceCost = new EssenceCosts(repository.requireFile("constants/essencecosts.json").json(JsonObject.class));
         fairySouls = new FairySouls(repository.gson, repository.requireFile("constants/fairy_souls.json").json(new TypeToken<Map<String, JsonElement>>() {
         }));
+        leveling = repository.requireFile("constants/leveling.json").json(Leveling.class);
     }
 
 
