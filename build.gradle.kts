@@ -90,7 +90,7 @@ publishing {
 
                 licenses {
                     license {
-                        name.set("BSD 3-Clause No Military License")
+                        name.set("BSD 2-Clause")
                         url.set("https://github.com/NotEnoughUpdates/RepoParser/blob/master/LICENSE")
                     }
                 }
