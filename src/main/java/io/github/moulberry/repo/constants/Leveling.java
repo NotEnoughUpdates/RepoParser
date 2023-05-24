@@ -1,4 +1,4 @@
-package io.github.moulberry.repo;
+package io.github.moulberry.repo.constants;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

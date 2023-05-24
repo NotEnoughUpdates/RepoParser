@@ -3,6 +3,7 @@ package io.github.moulberry.repo;
 import io.github.moulberry.repo.data.NEUIngredient;
 import io.github.moulberry.repo.data.NEUItem;
 import io.github.moulberry.repo.data.NEURecipe;
+import io.github.moulberry.repo.util.NEUId;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -31,9 +32,9 @@ public class NEURecipeCache implements IReloadable {
 
 
     @Getter
-    Map<String, Set<NEURecipe>> recipes = new HashMap<>();
+    Map<@NEUId String, Set<NEURecipe>> recipes = new HashMap<>();
     @Getter
-    Map<String, Set<NEURecipe>> usages = new HashMap<>();
+    Map<@NEUId String, Set<NEURecipe>> usages = new HashMap<>();
 
 
     @Override

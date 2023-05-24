@@ -3,11 +3,7 @@ package io.github.moulberry.repo;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import io.github.moulberry.repo.constants.Parents;
-import io.github.moulberry.repo.constants.Bonuses;
-import io.github.moulberry.repo.constants.Enchants;
-import io.github.moulberry.repo.constants.EssenceCosts;
-import io.github.moulberry.repo.constants.FairySouls;
+import io.github.moulberry.repo.constants.*;
 import lombok.Getter;
 
 import java.util.List;

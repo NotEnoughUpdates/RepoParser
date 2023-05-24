@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.gson.typeadapters;
+package io.github.moulberry.repo.vendored;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;

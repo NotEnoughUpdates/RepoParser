@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.github.moulberry.repo.NEURepositoryException;
+import io.github.moulberry.repo.util.NEUId;
 import lombok.Data;
 import lombok.Getter;
 
@@ -34,7 +35,7 @@ public class EssenceCosts {
     }
 
     @Getter
-    Map<String, EssenceCost> costs;
+    Map<@NEUId String, EssenceCost> costs;
 
     public EssenceCosts(JsonObject json) throws NEURepositoryException {
         costs = new HashMap<>();

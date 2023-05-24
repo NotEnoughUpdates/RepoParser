@@ -1,6 +1,7 @@
 package io.github.moulberry.repo;
 
 import io.github.moulberry.repo.data.NEUItem;
+import io.github.moulberry.repo.util.NEUId;
 import io.github.moulberry.repo.util.StreamIt;
 import lombok.Getter;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 public class NEUItems implements IReloadable {
 
     @Getter
-    Map<String, NEUItem> items;
+    Map<@NEUId String, NEUItem> items;
 
     @Override
     public void reload(NEURepository repository) throws NEURepositoryException {
@@ -29,7 +30,7 @@ public class NEUItems implements IReloadable {
     }
 
     @Nullable
-    public NEUItem getItemBySkyblockId(String itemId) {
+    public NEUItem getItemBySkyblockId(@NEUId String itemId) {
         return items.get(itemId.toUpperCase(Locale.ROOT));
     }
 }

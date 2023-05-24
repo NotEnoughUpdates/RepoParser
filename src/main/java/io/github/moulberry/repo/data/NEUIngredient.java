@@ -1,13 +1,14 @@
 package io.github.moulberry.repo.data;
 
 import com.google.gson.*;
+import io.github.moulberry.repo.util.NEUId;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
 
 @Getter
 public class NEUIngredient {
-    String itemId;
+    @NEUId String itemId;
     int amount;
     public static final String NEU_SENTINEL_EMPTY = "NEU_SENTINEL_EMPTY";
     public static final NEUIngredient SENTINEL_EMPTY = new NEUIngredient();

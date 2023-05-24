@@ -1,6 +1,7 @@
 package io.github.moulberry.repo.data;
 
 import com.google.gson.annotations.SerializedName;
+import io.github.moulberry.repo.util.NEUId;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -17,7 +18,7 @@ public class NEUItem {
     int damage;
     List<String> lore;
     @SerializedName("internalname")
-    String skyblockItemId;
+    @NEUId String skyblockItemId;
     String crafttext;
     String clickcommand;
     String modver;

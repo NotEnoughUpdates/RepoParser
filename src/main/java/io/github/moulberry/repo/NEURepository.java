@@ -3,7 +3,7 @@ package io.github.moulberry.repo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+import io.github.moulberry.repo.vendored.RuntimeTypeAdapterFactory;
 import io.github.moulberry.repo.data.*;
 import lombok.Getter;
 import lombok.NonNull;
