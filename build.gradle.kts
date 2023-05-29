@@ -17,6 +17,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly("org.jetbrains:annotations:24.0.0")
     implementation("com.google.code.gson:gson:2.9.0")
     testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
 }

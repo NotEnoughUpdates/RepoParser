@@ -4,6 +4,7 @@ import io.github.moulberry.repo.NEURepositoryException;
 import io.github.moulberry.repo.NEURepositoryVersion;
 import io.github.moulberry.repo.data.NEUForgeRecipe;
 import io.github.moulberry.repo.data.NEUMobDropRecipe;
+import io.github.moulberry.repo.data.NEUUnknownRecipe;
 
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
@@ -17,6 +18,11 @@ public class TestMain {
         NEURepository repository = NEURepository.of(Paths.get("NotEnoughUpdates-REPO"));
         NEURecipeCache recipes = NEURecipeCache.forRepo(repository);
         repository.reload();
+        System.out.println("unknown recipe types: " + repository.getItems().getItems().values().stream()
+                .flatMap(it -> it.getRecipes().stream())
+                .filter(it -> it instanceof NEUUnknownRecipe).map(it -> (NEUUnknownRecipe) it)
+                .map(NEUUnknownRecipe::getType)
+                .collect(Collectors.toSet()));
         System.out.println("pet mf (115): " + repository.getConstants().getBonuses().getPetRewards(115));
         System.out.println("skill reward (combat 60): " + repository.getConstants().getBonuses().getAccumulativeLevelingRewards("skill_combat", 60));
         System.out.println("parent of FLAWED_AMETHYST_GEM: " + repository.getConstants().getParents().getParent("FLAWED_AMETHYST_GEM"));

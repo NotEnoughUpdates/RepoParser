@@ -3,8 +3,8 @@ package io.github.moulberry.repo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import io.github.moulberry.repo.vendored.RuntimeTypeAdapterFactory;
 import io.github.moulberry.repo.data.*;
+import io.github.moulberry.repo.vendored.RuntimeTypeAdapterFactory;
 import lombok.Getter;
 import lombok.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -23,6 +23,8 @@ public final class NEURepository {
 
     final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
+            .registerTypeAdapter(new TypeToken<NEUUnknownRecipe>() {
+            }.getType(), new NEUUnknownRecipe.Serializer())
             .registerTypeAdapter(new TypeToken<NEUIngredient>() {
             }.getType(), new NEUIngredient.Serializer())
             .registerTypeAdapter(new TypeToken<Coordinate>() {
@@ -32,12 +34,13 @@ public final class NEURepository {
             .registerTypeAdapter(new TypeToken<NEUCraftingRecipe>() {
             }.getType(), new NEUCraftingRecipe.Serializer())
             .registerTypeAdapterFactory(
-                    RuntimeTypeAdapterFactory.of(NEURecipe.class, "type")
+                    RuntimeTypeAdapterFactory.of(NEURecipe.class, "type", true)
                             .registerSubtype(NEUForgeRecipe.class, "forge")
                             .registerSubtype(NEUTradeRecipe.class, "trade")
                             .registerSubtype(NEUCraftingRecipe.class, "crafting")
                             .registerSubtype(NEUMobDropRecipe.class, "drops")
                             .registerSubtype(NEUNpcShopRecipe.class, "npc_shop")
+                            .setFallbackType(NEUUnknownRecipe.class)
                             .setDefaultTypeTag("crafting")
             )
             .create();

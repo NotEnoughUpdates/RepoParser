@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 @Getter
 public class NEUIngredient {
     @NEUId String itemId;
-    int amount;
+    double amount;
     public static final String NEU_SENTINEL_EMPTY = "NEU_SENTINEL_EMPTY";
     public static final NEUIngredient SENTINEL_EMPTY = new NEUIngredient();
 
@@ -32,7 +32,7 @@ public class NEUIngredient {
         String[] parts = string.split(":");
         NEUIngredient ingredient = new NEUIngredient();
         if (parts.length == 2) {
-            ingredient.amount = Integer.parseInt(parts[1]);
+            ingredient.amount = Double.parseDouble(parts[1]);
         } else if (parts.length == 1) {
             ingredient.amount = 1;
         } else {
@@ -59,6 +59,6 @@ public class NEUIngredient {
 
     @Override
     public String toString() {
-        return String.format("NEUIngredient{%s:%d}", itemId, amount);
+        return String.format("NEUIngredient{%s:%f}", itemId, amount);
     }
 }
