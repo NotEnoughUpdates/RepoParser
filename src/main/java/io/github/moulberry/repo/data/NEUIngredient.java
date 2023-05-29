@@ -11,6 +11,7 @@ public class NEUIngredient {
     @NEUId String itemId;
     double amount;
     public static final String NEU_SENTINEL_EMPTY = "NEU_SENTINEL_EMPTY";
+    public static final String NEU_SENTINEL_COINS = "SKYBLOCK_COIN";
     public static final NEUIngredient SENTINEL_EMPTY = new NEUIngredient();
 
     static {
@@ -19,6 +20,13 @@ public class NEUIngredient {
     }
 
     private NEUIngredient() {
+    }
+
+    public static NEUIngredient ofCoins(double coins) {
+        NEUIngredient neuIngredient = new NEUIngredient();
+        neuIngredient.amount = coins;
+        neuIngredient.itemId = NEU_SENTINEL_COINS;
+        return neuIngredient;
     }
 
     public static NEUIngredient fromItem(NEUItem item, int count) {
