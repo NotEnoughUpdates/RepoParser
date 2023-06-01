@@ -23,6 +23,13 @@ public class TestMain {
                 .filter(it -> it instanceof NEUUnknownRecipe).map(it -> (NEUUnknownRecipe) it)
                 .map(NEUUnknownRecipe::getType)
                 .collect(Collectors.toSet()));
+        System.out.println("amount of people with rainbow names: " + repository.getConstants().getMisc().getRainbowNames().size());
+        System.out.println("display name for dynamic zone: " + repository.getConstants().getMisc().getAreaNames().get("dynamic"));
+        System.out.println("max blaze minion level: " + repository.getConstants().getMisc().getMaxMinionLevel().get("BLAZE_GENERATOR"));
+        System.out.println("cost to start a T5 slayer quest: " + repository.getConstants().getMisc().getSlayerCost().get(4));
+        System.out.println("tag for SUPERSTAR: " + repository.getConstants().getMisc().getRanks().get("SUPERSTAR").getTag());
+        System.out.println("upgrades for CANDY_TALISMAN: " + repository.getConstants().getMisc().getTalismanUpgrades().get("CANDY_TALISMAN"));
+        System.out.println("lore size of credits book (approximate number of contributors): " + repository.getConstants().getMisc().getCredits().getLore().size());
         System.out.println("pet mf (115): " + repository.getConstants().getBonuses().getPetRewards(115));
         System.out.println("skill reward (combat 60): " + repository.getConstants().getBonuses().getAccumulativeLevelingRewards("skill_combat", 60));
         System.out.println("parent of FLAWED_AMETHYST_GEM: " + repository.getConstants().getParents().getParent("FLAWED_AMETHYST_GEM"));

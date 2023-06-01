@@ -20,7 +20,8 @@ public class NEUConstants implements IReloadable {
     EssenceCosts essenceCost;
     @Getter
     FairySouls fairySouls;
-
+    @Getter
+    Misc misc;
     @Getter
     Leveling leveling;
 
@@ -33,6 +34,7 @@ public class NEUConstants implements IReloadable {
         essenceCost = new EssenceCosts(repository.requireFile("constants/essencecosts.json").json(JsonObject.class));
         fairySouls = new FairySouls(repository.gson, repository.requireFile("constants/fairy_souls.json").json(new TypeToken<Map<String, JsonElement>>() {
         }));
+        misc = repository.requireFile("constants/misc.json").json(Misc.class);
         leveling = repository.requireFile("constants/leveling.json").json(Leveling.class);
     }
 
