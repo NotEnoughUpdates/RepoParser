@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import io.github.moulberry.repo.constants.*;
+import io.github.moulberry.repo.data.Rarity;
+import io.github.moulberry.repo.util.PetId;
 import lombok.Getter;
 
 import java.util.List;
@@ -26,6 +28,8 @@ public class NEUConstants implements IReloadable {
     Leveling leveling;
     @Getter
     PetLevelingData petLevelingData;
+    @Getter
+    Map<@PetId String, Map<Rarity, PetNumbers>> petNumbers;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
@@ -39,6 +43,8 @@ public class NEUConstants implements IReloadable {
         misc = repository.requireFile("constants/misc.json").json(Misc.class);
         leveling = repository.requireFile("constants/leveling.json").json(Leveling.class);
         petLevelingData = repository.requireFile("constants/pets.json").json(PetLevelingData.class);
+        petNumbers = repository.requireFile("constants/petnums.json").json(new TypeToken<Map<@PetId String, Map<Rarity, PetNumbers>>>() {
+        });
     }
 
 

@@ -5,6 +5,7 @@ import io.github.moulberry.repo.NEURepositoryVersion;
 import io.github.moulberry.repo.data.NEUForgeRecipe;
 import io.github.moulberry.repo.data.NEUMobDropRecipe;
 import io.github.moulberry.repo.data.NEUUnknownRecipe;
+import io.github.moulberry.repo.data.Rarity;
 
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
@@ -24,6 +25,8 @@ public class TestMain {
                 .map(NEUUnknownRecipe::getType)
                 .collect(Collectors.toSet()));
         System.out.println("pet exp type for ROCK: " + repository.getConstants().getPetLevelingData().getPetExpTypes().get("ROCK"));
+        System.out.println("stats of level 1 legendary sheep " + repository.getConstants().getPetNumbers().get("SHEEP").get(Rarity.LEGENDARY).interpolatedStatsAtLevel(1));
+        System.out.println("stats of level 150 golden dragon " + repository.getConstants().getPetNumbers().get("GOLDEN_DRAGON").get(Rarity.LEGENDARY).interpolatedStatsAtLevel(150));
         System.out.println("max level of golden dragon: " + repository.getConstants().getPetLevelingData().getPetLevelingBehaviourOverrides().get("GOLDEN_DRAGON").getMaxLevel());
         System.out.println("amount of people with rainbow names: " + repository.getConstants().getMisc().getRainbowNames().size());
         System.out.println("display name for dynamic zone: " + repository.getConstants().getMisc().getAreaNames().get("dynamic"));
