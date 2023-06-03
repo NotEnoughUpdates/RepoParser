@@ -23,6 +23,8 @@ public class TestMain {
                 .filter(it -> it instanceof NEUUnknownRecipe).map(it -> (NEUUnknownRecipe) it)
                 .map(NEUUnknownRecipe::getType)
                 .collect(Collectors.toSet()));
+        System.out.println("pet exp type for ROCK: " + repository.getConstants().getPetLevelingData().getPetExpTypes().get("ROCK"));
+        System.out.println("max level of golden dragon: " + repository.getConstants().getPetLevelingData().getPetLevelingBehaviourOverrides().get("GOLDEN_DRAGON").getMaxLevel());
         System.out.println("amount of people with rainbow names: " + repository.getConstants().getMisc().getRainbowNames().size());
         System.out.println("display name for dynamic zone: " + repository.getConstants().getMisc().getAreaNames().get("dynamic"));
         System.out.println("max blaze minion level: " + repository.getConstants().getMisc().getMaxMinionLevel().get("BLAZE_GENERATOR"));

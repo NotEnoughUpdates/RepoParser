@@ -24,6 +24,8 @@ public class NEUConstants implements IReloadable {
     Misc misc;
     @Getter
     Leveling leveling;
+    @Getter
+    PetLevelingData petLevelingData;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
@@ -36,6 +38,7 @@ public class NEUConstants implements IReloadable {
         }));
         misc = repository.requireFile("constants/misc.json").json(Misc.class);
         leveling = repository.requireFile("constants/leveling.json").json(Leveling.class);
+        petLevelingData = repository.requireFile("constants/pets.json").json(PetLevelingData.class);
     }
 
 
