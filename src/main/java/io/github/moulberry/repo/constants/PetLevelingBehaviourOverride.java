@@ -50,6 +50,7 @@ public class PetLevelingBehaviourOverride {
      */
     @Nullable
     public PetExpModifierType getPetExpCostModifierType() {
+        if (rawLevelOverrideType == null) return null;
         if (rawLevelOverrideType == 1) return PetExpModifierType.APPEND;
         if (rawLevelOverrideType == 2) return PetExpModifierType.REPLACE;
         return null;
