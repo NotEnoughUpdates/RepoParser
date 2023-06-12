@@ -31,6 +31,7 @@ public class NEUItems implements IReloadable {
 
     @Nullable
     public NEUItem getItemBySkyblockId(@NEUId String itemId) {
+        if (items == null) return null;
         return items.get(itemId.toUpperCase(Locale.ROOT));
     }
 }

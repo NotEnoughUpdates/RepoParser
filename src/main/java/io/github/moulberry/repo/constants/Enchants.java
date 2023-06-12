@@ -22,10 +22,12 @@ public class Enchants {
     Map<String, List<Integer>> enchantExperienceCost;
 
     public List<String> getAvailableEnchants(String tooltype) {
+        if (availableEnchants == null) return null;
         return availableEnchants.get(tooltype);
     }
 
     public List<String> getConflictingEnchants(String enchant) {
+        if (enchantPools == null) return new ArrayList<>();
         List<String> conflicts = new ArrayList<>();
         for (List<String> enchantPool : enchantPools) {
             if (enchantPool.contains(enchant)) {

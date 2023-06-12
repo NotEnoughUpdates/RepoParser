@@ -21,10 +21,12 @@ public class Bonuses {
     Map<String, Map<Integer, Map<String, Float>>> bonusStats;
 
     public int getPetValue(Rarity rarity) {
+        if (petValue == null) return 0;
         return petValue.getOrDefault(rarity, 0);
     }
 
     public Map<String, Float> getPetRewards(int score) {
+        if (petRewards == null) return new HashMap<>();
         return petRewards.entrySet().stream()
                 .sorted(Comparator.comparingInt(Map.Entry::getKey))
                 .filter(it -> it.getKey() <= score)
@@ -36,6 +38,7 @@ public class Bonuses {
     }
 
     public Map<String, Float> getAccumulativeLevelingRewards(String name, int level) {
+        if (bonusStats == null) return new HashMap<>();
         Map<Integer, Map<String, Float>> rewardTiers = bonusStats.getOrDefault(name, new HashMap<>());
         Map<String, Float> rewards = new HashMap<>();
         Map<String, Float> currentBonuses = new HashMap<>();
