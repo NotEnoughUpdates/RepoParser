@@ -8,6 +8,7 @@ import io.github.moulberry.repo.data.NEUUnknownRecipe;
 import io.github.moulberry.repo.data.Rarity;
 
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,6 +25,17 @@ public class TestMain {
                 .filter(it -> it instanceof NEUUnknownRecipe).map(it -> (NEUUnknownRecipe) it)
                 .map(NEUUnknownRecipe::getType)
                 .collect(Collectors.toSet()));
+        System.out.println("all characters used for ids: " + repository.getItems().getItems().keySet().stream()
+                .flatMap(it -> Arrays.stream(it.split("")))
+                .collect(Collectors.toSet()));
+        repository.getConstants().getIslands().getWarps().forEach(it -> {
+            System.out.println("Warp:");
+            System.out.println("    To: " + it.getMode() + " (" + it.getX() + " " + it.getY() + " " + it.getZ() + ")");
+            System.out.println("    Using: " + it.getWarp());
+            for (String alias : it.getAliases()) {
+                System.out.println("    Using: " + alias);
+            }
+        });
         System.out.println("pet exp type for ROCK: " + repository.getConstants().getPetLevelingData().getPetExpTypes().get("ROCK"));
         System.out.println("stats of level 1 legendary sheep " + repository.getConstants().getPetNumbers().get("SHEEP").get(Rarity.LEGENDARY).interpolatedStatsAtLevel(1));
         System.out.println("stats of level 150 golden dragon " + repository.getConstants().getPetNumbers().get("GOLDEN_DRAGON").get(Rarity.LEGENDARY).interpolatedStatsAtLevel(150));

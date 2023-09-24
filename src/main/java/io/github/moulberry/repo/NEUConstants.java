@@ -11,25 +11,18 @@ import lombok.Getter;
 import java.util.List;
 import java.util.Map;
 
+@Getter
 public class NEUConstants implements IReloadable {
-    @Getter
     Bonuses bonuses;
-    @Getter
     Parents parents;
-    @Getter
     Enchants enchants;
-    @Getter
     EssenceCosts essenceCost;
-    @Getter
     FairySouls fairySouls;
-    @Getter
     Misc misc;
-    @Getter
     Leveling leveling;
-    @Getter
     PetLevelingData petLevelingData;
-    @Getter
     Map<@PetId String, Map<Rarity, PetNumbers>> petNumbers;
+    Islands islands;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
@@ -45,6 +38,8 @@ public class NEUConstants implements IReloadable {
         petLevelingData = repository.requireFile("constants/pets.json").json(PetLevelingData.class);
         petNumbers = repository.requireFile("constants/petnums.json").json(new TypeToken<Map<@PetId String, Map<Rarity, PetNumbers>>>() {
         });
+        NEURepoFile islandsFile = repository.file("constants/islands.json");
+        islands = islandsFile != null ? islandsFile.json(Islands.class) : new Islands();
     }
 
 
