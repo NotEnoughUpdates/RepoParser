@@ -32,7 +32,7 @@ public class NEUKatUpgradeRecipe implements NEURecipe {
      * Time for the pet upgrade in seconds.
      */
     @Getter
-    long seconds;
+    long time;
 
     @Override
     public Collection<NEUIngredient> getAllInputs() {
