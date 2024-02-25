@@ -1,5 +1,6 @@
 package io.github.moulberry.repo.data;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class NEUKatUpgradeRecipe implements NEURecipe {
      * Time for the pet upgrade in seconds.
      */
     @Getter
+    @SerializedName("time")
     long seconds;
 
     @Override
