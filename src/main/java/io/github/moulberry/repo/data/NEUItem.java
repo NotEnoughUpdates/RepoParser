@@ -26,6 +26,11 @@ public class NEUItem {
     List<String> info;
     boolean vanilla = false;
 
+    int x;
+    int y;
+    int z;
+    String island;
+
     @SerializedName("recipe")
     @Getter(value = AccessLevel.PRIVATE)
     NEURecipe singletonRecipe = null;
