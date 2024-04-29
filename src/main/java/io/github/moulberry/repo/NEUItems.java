@@ -18,7 +18,7 @@ public class NEUItems implements IReloadable {
 
     @Override
     public void reload(NEURepository repository) throws NEURepositoryException {
-        items = new HashMap<>();
+        Map<String, NEUItem> items = new HashMap<>();
         try (Stream<NEURepoFile> itemSources = repository.tree("items")
                 .filter(NEURepoFile::isFile)
                 .filter(it -> it.getFsPath().getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".json"))) {
@@ -27,6 +27,7 @@ public class NEUItems implements IReloadable {
                 items.put(item.getSkyblockItemId(), item);
             }
         }
+        this.items = items;
     }
 
     @Nullable
