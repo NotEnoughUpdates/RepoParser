@@ -19,12 +19,13 @@ repositories {
 dependencies {
     compileOnly("org.jetbrains:annotations:24.0.0")
     implementation("com.google.code.gson:gson:2.9.0")
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 lombok {
-    version = "1.18.22"
-    sha256 = ""
+    version = "1.18.32"
+    sha256 = "97574674e2a25f567a313736ace00df8787d443de316407d57fc877d9f19a65d"
 }
 
 java {

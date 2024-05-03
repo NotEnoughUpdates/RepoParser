@@ -22,5 +22,5 @@ the source code is licensed under the BSD-2-Clause License. The `gradlew`, `grad
 You will need to manually download the repository files. I would personally recommend making use of the E-Tag returned by
 https://github.com/NotEnoughUpdates/NotEnoughUpdates-REPO/archive/refs/heads/master.zip for simple applications. This 
 library is available at https://repo.nea.moe/#/releases/moe/nea/neurepoparser/1.0.0. Check out the 
-[TestMain.java](src/test/java/TestMain.java)
+[NEURepoParserTest.java](src/test/java/io/github/moulberry/repo/NEURepoParserTest.java)
 
