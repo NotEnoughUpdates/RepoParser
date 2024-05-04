@@ -17,6 +17,7 @@ jobs:
         with:
           repository: 'NotEnoughUpdates/NotEnoughUpdates-REPO'
           path: 'NotEnoughUpdates-REPO' # This is consistent with the repo path defined in NEURepoParserTest.java
+          ref: '3181dfb2e71204edb9bf70638418ee890cd28709'
 
       - name: Validate gradle wrapper
         uses: gradle/actions/wrapper-validation@v3
