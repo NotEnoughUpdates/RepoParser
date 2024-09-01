@@ -9,6 +9,7 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,8 +27,8 @@ public class NEURepoFile {
     private Path fsPath;
 
     public <T> T json(TypeToken<T> type) throws NEURepositoryException {
-        try {
-            return repository.gson.fromJson(Files.newBufferedReader(fsPath, StandardCharsets.UTF_8), type.getType());
+        try (Reader reader = Files.newBufferedReader(fsPath, StandardCharsets.UTF_8)) {
+            return repository.gson.fromJson(reader, type.getType());
         } catch (IOException | SecurityException e) {
             throw new NEURepositoryException(getPath(), "Could not read file", e);
         } catch (JsonSyntaxException e) {
@@ -36,8 +37,8 @@ public class NEURepoFile {
     }
 
     public <T> T json(Class<T> $class) throws NEURepositoryException {
-        try {
-            return repository.gson.fromJson(Files.newBufferedReader(fsPath, StandardCharsets.UTF_8), $class);
+        try (Reader reader = Files.newBufferedReader(fsPath, StandardCharsets.UTF_8)) {
+            return repository.gson.fromJson(reader, $class);
         } catch (IOException | SecurityException e) {
             throw new NEURepositoryException(getPath(), "Could not read file", e);
         } catch (JsonSyntaxException e) {

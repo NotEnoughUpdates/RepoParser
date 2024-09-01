@@ -9,8 +9,7 @@ public class NEURepositoryVersion {
     public static Properties VERSION_PROPERTIES = new Properties();
 
     static {
-        InputStream resourceAsStream = NEURepositoryVersion.class.getClassLoader().getResourceAsStream("neurepoparser.properties");
-        try {
+        try (InputStream resourceAsStream = NEURepositoryVersion.class.getClassLoader().getResourceAsStream("neurepoparser.properties");) {
             VERSION_PROPERTIES.load(resourceAsStream);
         } catch (IOException | NullPointerException e) {
             new RuntimeException("NEURepositoryVersion could not load neurepoparser.properties.", e).printStackTrace();
