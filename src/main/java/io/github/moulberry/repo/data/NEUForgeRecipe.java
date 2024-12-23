@@ -2,6 +2,7 @@ package io.github.moulberry.repo.data;
 
 
 import lombok.Getter;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,10 +17,16 @@ public class NEUForgeRecipe implements NEURecipe {
     int duration;
     @Getter
     transient NEUIngredient outputStack;
+    @Getter
+    @Nullable
+    String extraText;
 
 
     @Override
     public void fillItemInfo(NEUItem item) {
+        if (extraText == null) {
+            extraText = item.crafttext;
+        }
         if (overrideOutputId == null) {
             outputStack = NEUIngredient.fromString(item.skyblockItemId);
         } else {
