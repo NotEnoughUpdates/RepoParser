@@ -31,6 +31,9 @@ public class NEUItem {
     int z;
     String island;
 
+	@SerializedName("breakingpower")
+	int breakingPower;
+
     @SerializedName("recipe")
     @Getter(value = AccessLevel.PRIVATE)
     NEURecipe singletonRecipe = null;
