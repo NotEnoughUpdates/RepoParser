@@ -8,8 +8,10 @@ import io.github.moulberry.repo.data.Rarity;
 import io.github.moulberry.repo.util.PetId;
 import lombok.Getter;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Getter
 public class NEUConstants implements IReloadable {
@@ -23,6 +25,7 @@ public class NEUConstants implements IReloadable {
     PetLevelingData petLevelingData;
     Map<@PetId String, Map<Rarity, PetNumbers>> petNumbers;
     Islands islands;
+    BazaarStocks bazaarStocks;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
@@ -40,6 +43,12 @@ public class NEUConstants implements IReloadable {
         });
         NEURepoFile islandsFile = repository.file("constants/islands.json");
         islands = islandsFile != null ? islandsFile.json(Islands.class) : new Islands();
+        NEURepoFile bazaarFile = repository.file("constants/bazaarstocks.json");
+        bazaarStocks = new BazaarStocks(
+                bazaarFile != null ?
+                        (bazaarFile.json(new TypeToken<List<BazaarStocks.InternalRepresentation>>() {
+                        }).stream().collect(Collectors.toMap(BazaarStocks.InternalRepresentation::getId, BazaarStocks.InternalRepresentation::getStock)))
+                        : (Collections.emptyMap()));
     }
 
 
