@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class NEURepoParserTest {
     private static final NEURepository repository = NEURepository.of(Paths.get("NotEnoughUpdates-REPO"));
     private static final NEURecipeCache recipes = NEURecipeCache.forRepo(repository);
+    private static final ItemOverlays overlay = ItemOverlays.forRepo(repository);
 
     @BeforeAll
     static void beforeAll() throws NEURepositoryException {
@@ -19,6 +20,13 @@ public class NEURepoParserTest {
         System.out.printf("Schema %d.%d%n", NEURepositoryVersion.REPOSITORY_SCHEMA_VERSION_MAJOR, NEURepositoryVersion.REPOSITORY_SCHEMA_VERSION_MINOR);
 
         repository.reload();
+    }
+
+    @Test
+    void testOverlayFiles() {
+        Assertions.assertTrue(overlay.getMostUpToDateCompatibleWith(4324).isEmpty());
+        Assertions.assertEquals(4325, overlay.getMostUpToDateCompatibleWith(4326).get("BAMBOO").getVersion());
+        Assertions.assertEquals("BAMBOO", overlay.getMostUpToDateCompatibleWith(4325).get("BAMBOO").getItemId());
     }
 
     @Test
