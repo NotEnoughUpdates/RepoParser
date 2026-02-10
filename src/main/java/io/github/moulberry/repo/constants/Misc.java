@@ -52,4 +52,9 @@ public class Misc {
      */
     @SerializedName("talisman_upgrades")
     Map<String, List<String>> talismanUpgrades;
+    /**
+     * A list of talismans that should be ignored because they are from the rift.
+     */
+    @SerializedName("ignored_talisman")
+    List<String> ignoredTalismans;
 }
