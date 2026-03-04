@@ -18,7 +18,7 @@ import java.nio.file.Path;
 public class NEURepoFile {
 
     public String getPath() {
-        return repository.baseFolder.relativize(fsPath).toString();
+        return repository.baseFolder.relativize(fsPath).toString().replace("\\", "/");
     }
 
     @Getter

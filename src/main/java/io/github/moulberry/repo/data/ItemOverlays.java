@@ -65,5 +65,5 @@ public class ItemOverlays implements IReloadable {
         String itemId;
     }
 
-    private static final Pattern PATH_PATTERN = Pattern.compile("itemsOverlay[/\\\\]([0-9]+)[/\\\\](.+)\\.snbt");
+    private static final Pattern PATH_PATTERN = Pattern.compile("itemsOverlay/([0-9]+)/(.+)\\.snbt");
 }
