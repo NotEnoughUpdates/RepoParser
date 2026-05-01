@@ -41,6 +41,7 @@ public final class NEURepository {
                             .registerSubtype(NEUMobDropRecipe.class, "drops")
                             .registerSubtype(NEUNpcShopRecipe.class, "npc_shop")
                             .registerSubtype(NEUKatUpgradeRecipe.class, "katgrade")
+                            .registerSubtype(NEUDirectPetUpgradeRecipe.class, "direct_pet_upgrade")
                             .setFallbackType(NEUUnknownRecipe.class)
                             .setDefaultTypeTag("crafting")
             )
