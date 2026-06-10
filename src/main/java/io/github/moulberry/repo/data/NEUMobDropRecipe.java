@@ -18,9 +18,27 @@ import java.util.List;
 public class NEUMobDropRecipe implements NEURecipe {
     @SerializedName("combat_xp")
     int combatExperience;
+    @SerializedName("taming_xp")
+    int tamingExperience;
+    @SerializedName("mining_xp")
+    int miningExperience;
+    @SerializedName("foraging_xp")
+    int foragingExperience;
+    @SerializedName("enchanting_xp")
+    int enchantingExperience;
+    @SerializedName("carpentry_xp")
+    int carpentryExperience;
+    @SerializedName("farming_xp")
+    int farmingExperience;
+    @SerializedName("fishing_xp")
+    int fishingExperience;
+    @SerializedName("alchemy_xp")
+    int alchemyExperience;
+    @SerializedName("runecrafting_xp")
+    int runecraftingExperience;
     int coins;
     @SerializedName("xp")
-    int enchantingExperience;
+    int experienceOrbs;
     String name;
     String render;
     String panorama;
