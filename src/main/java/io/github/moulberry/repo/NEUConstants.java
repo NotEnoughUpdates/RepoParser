@@ -26,6 +26,7 @@ public class NEUConstants implements IReloadable {
     Map<@PetId String, Map<Rarity, PetNumbers>> petNumbers;
     Islands islands;
     BazaarStocks bazaarStocks;
+    ResourcePack resourcePack;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
@@ -49,6 +50,7 @@ public class NEUConstants implements IReloadable {
                         (bazaarFile.json(new TypeToken<List<BazaarStocks.InternalRepresentation>>() {
                         }).stream().collect(Collectors.toMap(BazaarStocks.InternalRepresentation::getId, BazaarStocks.InternalRepresentation::getStock)))
                         : (Collections.emptyMap()));
+        resourcePack = repository.requireFile("constants/resource_pack.json").json(ResourcePack.class);
     }
 
 
