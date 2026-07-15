@@ -24,6 +24,8 @@ public class NEUMobDropRecipe implements NEURecipe {
     int miningExperience;
     @SerializedName("foraging_xp")
     int foragingExperience;
+    @SerializedName("hunting_xp")
+    int huntingExperience;
     @SerializedName("enchanting_xp")
     int enchantingExperience;
     @SerializedName("carpentry_xp")
