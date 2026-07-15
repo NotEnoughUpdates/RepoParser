@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Getter
 public class NEUConstants implements IReloadable {
+    Map<String, AbiphoneContact> abiphoneContacts;
     Bonuses bonuses;
     Parents parents;
     Enchants enchants;
@@ -29,6 +30,7 @@ public class NEUConstants implements IReloadable {
     ResourcePack resourcePack;
 
     public void reload(NEURepository repository) throws NEURepositoryException {
+        abiphoneContacts = repository.requireFile("constants/abiphone.json").json(new TypeToken<Map<String, AbiphoneContact>>() {});
         bonuses = repository.requireFile("constants/bonuses.json").json(Bonuses.class);
         parents = new Parents(repository.requireFile("constants/parents.json")
                 .json(new TypeToken<Map<String, List<String>>>() {

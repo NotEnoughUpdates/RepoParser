@@ -1,5 +1,6 @@
 package io.github.moulberry.repo;
 
+import io.github.moulberry.repo.constants.AbiphoneContact;
 import io.github.moulberry.repo.data.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class NEURepoParserTest {
@@ -113,5 +115,13 @@ public class NEURepoParserTest {
                 .map(NEUUnknownRecipe.class::cast)
                 .collect(Collectors.toList())
         );
+    }
+
+    @Test
+    void testAbiphoneContacts() {
+        AbiphoneContact elizabeth = repository.getConstants().getAbiphoneContacts().get("Elizabeth");
+
+        Assertions.assertTrue(Objects.requireNonNull(elizabeth.getCallNames()).contains("elizabeth"));
+        Assertions.assertEquals("hub", elizabeth.getIsland());
     }
 }
