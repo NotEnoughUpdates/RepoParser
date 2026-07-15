@@ -2,3 +2,4 @@ NotEnoughUpdates-REPO
 .idea/
 .gradle/
 build/
+*.DS_Store
