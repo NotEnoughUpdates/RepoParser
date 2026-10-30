@@ -20,7 +20,6 @@ public class NEUItem {
     @SerializedName("internalname")
     @NEUId String skyblockItemId;
     String crafttext;
-    String clickcommand;
     String modver;
     String infoType;
     List<String> info;

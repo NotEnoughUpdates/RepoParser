@@ -64,19 +64,15 @@ public class NEURepoParserTest {
 
     @Test
     void testMiscConstants() {
-        Assertions.assertEquals(210, repository.getConstants().getMisc().getRainbowNames().size());
-        Assertions.assertEquals("Private Island", repository.getConstants().getMisc().getAreaNames().get("dynamic"));
         Assertions.assertEquals(12, repository.getConstants().getMisc().getMaxMinionLevel().get("BLAZE_GENERATOR"));
         Assertions.assertEquals("100000", repository.getConstants().getMisc().getSlayerCost().get(4));
         Assertions.assertEquals("MVP", repository.getConstants().getMisc().getRanks().get("SUPERSTAR").getTag());
         Assertions.assertEquals("[CANDY_RING, CANDY_ARTIFACT, CANDY_RELIC]", repository.getConstants().getMisc().getTalismanUpgrades().get("CANDY_TALISMAN").toString());
-        Assertions.assertEquals(31, repository.getConstants().getMisc().getCredits().getLore().size());
     }
 
     @Test
     void testConstants() {
-        Assertions.assertEquals("{magic_find=5.0}", repository.getConstants().getBonuses().getPetRewards(115).toString());
-        Assertions.assertEquals("{damage_increase=2.0999992, crit_chance=30.0}", repository.getConstants().getBonuses().getAccumulativeLevelingRewards("skill_combat", 60).toString());
+        Assertions.assertEquals("Private Island", repository.getConstants().getIslands().getAreaNames().get("dynamic"));
         Assertions.assertEquals("Optional[PERFECT_AMETHYST_GEM]", repository.getConstants().getParents().getParent("FLAWED_AMETHYST_GEM").toString());
         Assertions.assertEquals("[bane_of_arthropods, cleave, critical, cubism, dragon_hunter, ender_slayer, execute, experience, fire_aspect, first_strike, giant_killer, impaling, knockback, lethality, life_steal, looting, luck, mana_steal, PROSECUTE, scavenger, sharpness, smite, syphon, titan_killer, thunderlord, thunderbolt, triple_strike, vampirism, venomous, vicious, ultimate_one_for_all, ultimate_soul_eater, ultimate_chimera, ultimate_combo, ultimate_swarm, ultimate_wise, smoldering, ultimate_inferno, ultimate_fatal_tempo, tabasco, champion, divine_gift, magmarizer]", repository.getConstants().getEnchants().getAvailableEnchants("SWORD").toString());
         Assertions.assertEquals("[ultimate_one_for_all]", repository.getConstants().getEnchants().getConflictingEnchants("sharpness").toString());

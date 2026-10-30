@@ -9,9 +9,7 @@ public enum Rarity {
     LEGENDARY,
     MYTHIC,
     DIVINE,
-    SUPREME,
     SPECIAL,
     VERY_SPECIAL,
     UNKNOWN
-
 }
